@@ -7,17 +7,6 @@ import streamlit as st
 # Load environment variables for local development
 load_dotenv()
 
-def get_secret(key: str, default: str = None) -> Optional[str]:
-    """Get secret from Streamlit secrets or environment variables"""
-    try:
-        # Try Streamlit secrets first (for cloud deployment)
-        if hasattr(st, 'secrets') and key in st.secrets:
-            return st.secrets[key]
-    except:
-        pass
-    
-    # Fall back to environment variables (for local development)
-    return os.getenv(key, default)
 
 @dataclass
 class ModelConfig:
@@ -75,8 +64,8 @@ class Config:
         return {
             "OpenAI GPT-4": ModelConfig(
                 name="gpt-4o",
-                api_key=get_secret("OPENAI_API_KEY"),
-                enabled=bool(get_secret("OPENAI_API_KEY"))
+                api_key=st.secrets.get("OPENAI_API_KEY"),
+                enabled=bool(st.secrets.get("OPENAI_API_KEY"))
             ),
             "OpenAI GPT-4 Mini": ModelConfig(
                 name="gpt-4o-mini",
@@ -86,32 +75,32 @@ class Config:
             ),
             "Mistral 7B": ModelConfig(
                 name="mistral-small-latest",
-                api_key=get_secret("MISTRAL_API_KEY"),
-                base_url=get_secret("MISTRAL_BASE_URL", "https://api.mistral.ai/v1"),
-                enabled=bool(get_secret("MISTRAL_API_KEY"))
+                api_key=st.secrets.get("MISTRAL_API_KEY"),
+                base_url=st.secrets.get("MISTRAL_BASE_URL", "https://api.mistral.ai/v1"),
+                enabled=bool(st.secrets.get("MISTRAL_API_KEY"))
             ),
             "Google Gemini": ModelConfig(
                 name="gemini-1.5-flash",
-                api_key=get_secret("GOOGLE_API_KEY"),
-                enabled=bool(get_secret("GOOGLE_API_KEY"))
+                api_key=st.secrets.get("GOOGLE_API_KEY"),
+                enabled=bool(st.secrets.get("GOOGLE_API_KEY"))
             ),
             "Grok": ModelConfig(
                 name="grok-beta",
-                api_key=get_secret("GROK_API_KEY"),
-                base_url=get_secret("GROK_BASE_URL", "https://api.x.ai/v1"),
-                enabled=bool(get_secret("GROK_API_KEY"))
+                api_key=st.secrets.get("GROK_API_KEY"),
+                base_url=st.secrets.get("GROK_BASE_URL", "https://api.x.ai/v1"),
+                enabled=bool(st.secrets.get("GROK_API_KEY"))
             )
         }
     
     def _init_search(self) -> SearchConfig:
         search_config = SearchConfig()
         
-        if get_secret("SERPER_API_KEY"):
+        if st.secrets.get("SERPER_API_KEY"):
             search_config.provider = "serper"
-            search_config.api_key = get_secret("SERPER_API_KEY")
-        elif get_secret("GOOGLE_SEARCH_API_KEY"):
+            search_config.api_key = st.secrets.get("SERPER_API_KEY")
+        elif st.secrets.get("GOOGLE_SEARCH_API_KEY"):
             search_config.provider = "google"
-            search_config.api_key = get_secret("GOOGLE_SEARCH_API_KEY")
+            search_config.api_key = st.secrets.get("GOOGLE_SEARCH_API_KEY")
         else:
             search_config.provider = "duckduckgo"
             search_config.enabled = True
