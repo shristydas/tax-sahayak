@@ -191,7 +191,7 @@ TaxSahayak/
 │   ├── rag_utils.py          # RAG system logic
 │   ├── web_search.py         # Web search integration
 │   └── response_formatter.py  # Response formatting
-├── data/                      # Data storage
+├── data/                      # Data storage [this folder will be created once knowledge base is created by uploading a PDF]
 ├── app.py                     # Main Streamlit application
 ├── requirements.txt           # Dependencies
 └── README.md                  # This file
