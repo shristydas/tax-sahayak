@@ -2,13 +2,30 @@
 
 🧾 **TaxSahayak** is an intelligent personal tax assistant designed specifically for Indian taxpayers. It leverages advanced RAG (Retrieval-Augmented Generation) technology with the complete Income Tax Act 1961 to provide accurate, contextual, and legally grounded tax guidance.
 
+## 🚀 Quick Start - Live Demo
+
+**Try TaxSahayak instantly without any setup:**
+
+1. **Visit the Live Application**: [https://tax-sahayak.streamlit.app/](https://tax-sahayak.streamlit.app/)
+
+2. **Select AI Model**: Choose between **Gemini Model** or **Mistral Model** from the sidebar
+
+3. **Start Asking Questions**: 
+   - Type any tax-related query in the chatbox, OR
+   - Select from the quick action prompts for common questions
+
+4. **Get Results**: Click enter and receive AI-powered responses based on The Income Tax Act, 1961
+
+**The knowledge base is pre-trained on THE INCOME-TAX ACT, 1961** - No additional setup required!
+
+---
+
 ## ✨ Features
 
 ### 🤖 Multiple AI Models
 - **OpenAI GPT-4/GPT-3.5**: Premium AI models for comprehensive responses
 - **Mistral 7B**: Open-source alternative for efficient processing
 - **Google Gemini**: Google's advanced language model
-- **Grok**: X.AI's latest language model
 - **Dynamic Model Switching**: Choose the best model for your needs
 
 ### 📚 RAG-Powered Knowledge Base
@@ -19,7 +36,7 @@
 
 ### 🌐 Live Web Search Integration
 - **Current Information**: Get latest tax updates and policy changes
-- **Multiple Providers**: Serper, Google Custom Search, DuckDuckGo
+- **Multiple Providers**: Serper, Google Custom Search
 - **Toggle Control**: Enable/disable web search as needed
 - **Source Attribution**: Clear distinction between statutory and web information
 
@@ -30,16 +47,17 @@
 - **Quick Actions**: Pre-built common tax queries
 - **Professional Formatting**: Clear, readable responses with citations
 
-## 🚀 Quick Start
+## 🔧 Development Setup
 
 ### Prerequisites
 - Python 3.8 or higher (for local development)
 - API keys for at least one AI model (OpenAI, Google, Mistral, or Grok)
 - Income Tax Act 1961 PDF document
 
-### Option 1: Streamlit Cloud Deployment (Recommended)
+### Option 1: Deploy Your Own Streamlit Cloud Instance
 
-1. **Deploy to Streamlit Cloud:**
+1. **Fork and Deploy:**
+   - Fork this repository to your GitHub account
    - Visit [share.streamlit.io](https://share.streamlit.io/)
    - Connect your GitHub repository
    - Select main branch and `app.py` as entry point
@@ -50,13 +68,11 @@
    - Add your secrets in TOML format:
 
 ```toml
-# Required: At least one LLM API key
 OPENAI_API_KEY = "your_openai_api_key_here"
 MISTRAL_API_KEY = "your_mistral_api_key_here"
 GOOGLE_API_KEY = "your_google_api_key_here"
 GROK_API_KEY = "your_grok_api_key_here"
 
-# Optional: Search APIs for web search
 SERPER_API_KEY = "your_serper_api_key_here"
 GOOGLE_SEARCH_API_KEY = "your_google_search_api_key_here"
 GOOGLE_CSE_ID = "your_google_cse_id_here"
@@ -128,10 +144,6 @@ DATA_PATH=./data
 2. Sign up and get API access
 3. Add to `.env` file as `MISTRAL_API_KEY`
 
-#### Grok (X.AI)
-1. Visit [X.AI](https://x.ai/)
-2. Request API access
-3. Add to `.env` file as `GROK_API_KEY`
 
 #### Web Search (Optional)
 - **Serper**: Visit [serper.dev](https://serper.dev/) for Google Search API
@@ -139,7 +151,13 @@ DATA_PATH=./data
 
 ## 📖 Usage Guide
 
-### Initial Setup
+### Using the Live Demo
+1. Visit [https://tax-sahayak.streamlit.app/](https://tax-sahayak.streamlit.app/)
+2. Select your preferred AI model (**Gemini or Mistral recommended**)
+3. Choose response style (Detailed or Concise)
+4. Ask your tax questions or use quick action prompts
+
+### Local/Custom Deployment Usage
 1. Launch the application using `streamlit run app.py`
 2. Upload the Income Tax Act 1961 PDF in the sidebar
 3. Wait for the knowledge base to be processed and indexed
@@ -162,7 +180,7 @@ DATA_PATH=./data
 ## 🏗️ Architecture
 
 ```
-neostats/
+TaxSahayak/
 ├── config/
 │   └── config.py              # Configuration management
 ├── models/
@@ -243,6 +261,7 @@ neostats/
 3. **Accuracy**: While based on Income Tax Act, interpretations may vary
 4. **Updates**: Tax laws change frequently; verify with latest notifications
 5. **Liability**: Users are responsible for their tax compliance decisions
+6. **API Availability**: **Grok and OpenAI APIs are behind a paywall and cannot be used in the live demo.** For working functionality, please use **Gemini** or **Mistral** models which are available and fully functional
 
 ## 🛡️ Privacy and Security
 
@@ -251,12 +270,6 @@ neostats/
 - **Local Processing**: Vector database runs locally
 - **No Personal Data**: No personal tax information is retained
 
-## 📊 Performance
-
-- **Response Time**: < 5 seconds for complex queries
-- **Accuracy**: High accuracy with Income Tax Act citations
-- **Scalability**: Supports multiple concurrent users
-- **Offline Capability**: Core features work without internet
 
 ## 🤝 Contributing
 
@@ -268,7 +281,11 @@ We welcome contributions! Please see our contributing guidelines:
 4. Add tests if applicable
 5. Submit a pull request
 
+---
 
 **Made with ❤️ for Indian Taxpayers**
 
 *TaxSahayak - Simplifying Tax Compliance Through AI*
+
+*-by Shristy Das*
+*shristydas2002@gmail.com*
