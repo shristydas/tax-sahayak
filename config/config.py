@@ -69,9 +69,9 @@ class Config:
             ),
             "OpenAI GPT-4 Mini": ModelConfig(
                 name="gpt-4o-mini",
-                api_key=get_secret("OPENAI_API_KEY"),
+                api_key=st.secrets.get("OPENAI_API_KEY"),
                 max_tokens=3000,
-                enabled=bool(get_secret("OPENAI_API_KEY"))
+                enabled=bool(st.secrets.get("OPENAI_API_KEY"))
             ),
             "Mistral 7B": ModelConfig(
                 name="mistral-small-latest",
